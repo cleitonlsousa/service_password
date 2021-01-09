@@ -2,6 +2,7 @@ package br.com.password.service;
 
 import br.com.password.service.api.request.PasswordRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,4 +118,22 @@ class PasswordControllerTest {
 				.andExpect(MockMvcResultMatchers.content().string("false"));
 
 	}
+
+	@Test
+	public void notValidCharDuplicated() throws Exception {
+
+		PasswordRequest request = new PasswordRequest();
+		request.setPassword("AbTp9!foA");
+
+		mockMvc.perform(
+				post("/password")
+						.content(new ObjectMapper().writeValueAsString(request))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+		)
+				.andExpect(status().isOk())
+				.andExpect(MockMvcResultMatchers.content().string("false"));
+
+	}
+
 }
