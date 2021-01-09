@@ -16,14 +16,14 @@ public class PasswordService {
         if (request == null || request.getPassword() == null || request.getPassword().trim().isEmpty())
             return Boolean.FALSE;
 
-        if(!testDuplicatedChar(request.getPassword()))
+        if(!validateDuplicateChar(request.getPassword()))
             return Boolean.FALSE;
 
         return request.getPassword().matches(REGEX);
 
     }
 
-    private Boolean testDuplicatedChar(String password){
+    private Boolean validateDuplicateChar(String password){
 
         List<Character> listChars = new ArrayList<>();
 
