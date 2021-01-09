@@ -23,7 +23,7 @@ Certifique-se de ter o Maven instalado e adicionado ao PATH de seu sistema opera
 - `git clone https://github.com/cleitonlsousa/service_password.git`
 - `cd service_password`
 - `mvn spring-boot:run`
-- `Acesse o endpoint através da url localhost:8080/password/validate`
+- `Acesse o endpoint através da url localhost:8080/service_password/password/`
 - `A chamada utiliza o metodo POST e deve enviar o corpo: {"password" : "password"}`
 
 ### Importando o projeto
